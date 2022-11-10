@@ -1,2 +1,2 @@
-print("OK")
 
+from flask import Flask

@@ -17,3 +17,16 @@ def blog_page(id: int, response: Response) -> Dict[str, Any]:
     response.status_code = status.HTTP_200_OK
     return {"message": f"Found {id}, default type: {type(id)}"}
 
+
+# Addition of Tags, makes the '/docs' endpoint much easier to navigate
+@app.get('/messages/{id}',
+         tags=['messages']
+        )  # status_code is the default status-code returned 
+def get_all_messages(id: int) -> Dict[str, Any]:
+    return {"message": f"Message {id}, default type: {type(id)}"}
+
+@app.get('/messages/{msg_id}/comments/{comment_id}',
+         tags=['messages', 'comments']
+        )  # status_code is the default status-code returned 
+def get_message_comment(msg_id: int, comment_id: int) -> Dict[str, Any]:
+    return {"message": f"Message {msg_id}, Comment: {comment_id}"}

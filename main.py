@@ -1,4 +1,6 @@
 
+from typing import Dict, Any
+
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -10,7 +12,7 @@ def index():
 
 
 @app.get('/blog/{id}')
-def blog_page(id):
+def blog_page(id: int) -> Dict[str, Any]:
     return {"message": f"This is blog with ID: {id}, default type: {type(id)}"}
 
 

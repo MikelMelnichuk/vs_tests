@@ -15,10 +15,6 @@ def index():
 def all_blog_page() -> Dict[str, Any]:
     return {"message": f"All blogs!"}
 
-@app.get('/blog/{id}')
-def blog_page(id: int) -> Dict[str, Any]:
-    return {"message": f"This is blog with ID: {id}, default type: {type(id)}"}
-
 from enum import Enum
 class BlogType(str, Enum):
     short = "short"
@@ -28,6 +24,11 @@ class BlogType(str, Enum):
 @app.get('/blog/type/{blog_type}')
 def get_blog_type(blog_type: BlogType) -> Dict[str, Any]:
     return {"message": f"This is blog is of type: {blog_type}, default type: {type(blog_type)}"}
+
+@app.get('/blog/{id}')
+def blog_page(id: int) -> Dict[str, Any]:
+    return {"message": f"This is blog with ID: {id}, default type: {type(id)}"}
+
 
 # To run:
 # uvicorn main:app --reload

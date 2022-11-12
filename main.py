@@ -21,6 +21,8 @@ class BlogType(str, Enum):
     long = "long"
     howto = "howto"
 
+# BTW: http://127.0.0.1:8000/docs#/default/get_blog_type_blog_type__blog_type__get 
+# Will provide ONLY the values that you can use for the function (very cool) 
 @app.get('/blog/type/{blog_type}')
 def get_blog_type(blog_type: BlogType) -> Dict[str, Any]:
     return {"message": f"This is blog is of type: {blog_type}, default type: {type(blog_type)}"}

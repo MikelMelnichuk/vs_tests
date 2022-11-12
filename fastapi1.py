@@ -39,7 +39,13 @@ def blog_page(id: int) -> Dict[str, Any]:
 
 
 # To run:
-# uvicorn main:app --reload
+# uvicorn fastapi1:app --reload
 
 # Go to docs:
 # http://127.0.0.1:8000/docs
+
+
+# Helpful functinos:
+# curl -X 'GET' \
+#   'http://127.0.0.1:8000/blog/query_param_test?query_param1=123123&query_param2=abcabc' \
+#   -H 'accept: application/json'

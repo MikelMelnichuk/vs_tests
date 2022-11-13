@@ -12,7 +12,7 @@ curl -X POST \
 
 
 # Get Request
-This request Saves the data as parameters using the URL '?query_param1=123123&query_param2=abcabc'
+This request Saves the data as QUERY parameters using the URL '?query_param1=123123&query_param2=abcabc'
 
 curl -X 'GET' \
     -H 'accept: application/json' \

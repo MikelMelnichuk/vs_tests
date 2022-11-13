@@ -1,0 +1,19 @@
+
+
+# POST Request
+This request Saves the data (in JSON format = 'application/json') 
+    inside the boddy of the request (with Content-Type: application/json)
+
+curl -X POST \
+    -H 'Content-Type: application/json' \
+    -d '{"Status": "True"}' \
+    http://127.0.0.1:5000/
+
+
+
+# Get Request
+This request Saves the data as parameters using the URL '?query_param1=123123&query_param2=abcabc'
+
+curl -X 'GET' \
+    -H 'accept: application/json' \
+    'http://127.0.0.1:5000/?query_param1=123123&query_param2=abcabc'

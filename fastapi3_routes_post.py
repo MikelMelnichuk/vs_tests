@@ -1,5 +1,5 @@
 
-from typing import Optional
+from typing import Optional 
 
 
 from fastapi import APIRouter, Query, Body
@@ -47,3 +47,4 @@ def create_blog_validators(blog: BlogModel, id: int,
         'blog': blog,
         'testsss': testsss
     }
+    

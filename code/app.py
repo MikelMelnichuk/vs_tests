@@ -1,6 +1,6 @@
 from typing import List, Dict, Any
 
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Resource, Api
 
 
@@ -27,7 +27,8 @@ class Item(Resource):
         return {"item": None}, 404
 
     def post(self, name):
-        new_item = {"name": name, "price": 15.5}
+        user_data = request.get_json()
+        new_item = {"name": name, "price": user_data["price"]}
         all_items.append(new_item)
 
         # 201 -> Created status

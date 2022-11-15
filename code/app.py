@@ -17,16 +17,18 @@ class Items(Resource):
 
 class Item(Resource):
     def get(self, name):
-        search_result = [item for item in all_items if item["name"] == name]
-
-        # Return the item if found
-        if search_result:
-            return search_result[0]
+        # Take the first item that is found (if any)
+        search_item = next(filter(lambda x: x["name"] == name, all_items), None)
 
         # Return None item, with Error not found (404)
-        return {"item": None}, 404
+        return {"item": search_item}, 200 if search_item else 404
 
     def post(self, name):
+
+        # Validation check
+        if next(filter(lambda x: x["name"] == name, all_items), None) is not None:
+            return {"message": f"Item with name {name} already exists!"}, 400
+
         user_data = request.get_json()
         new_item = {"name": name, "price": user_data["price"]}
         all_items.append(new_item)

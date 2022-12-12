@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 router = APIRouter(prefix="/blog", tags=["blog"])
 
-
+# Declaring a custom class for input or output of our enpoint
 class BlogModel(BaseModel):
     title: str
     content: str

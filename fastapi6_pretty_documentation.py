@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from pydantic import BaseModel, confloat
+from pydantic import BaseModel, Field
 
 
 # some documentation in markdown
@@ -42,10 +42,10 @@ def home_page():
 
 # We'll take this in:
 class Features(BaseModel):
-    sepal_length: confloat(ge=0.0, le=1.0)  # ensures values  are between 0 and 1
-    sepal_width: confloat(ge=0.0, le=1.0)
-    petal_length: confloat(ge=0.0, le=1.0)
-    petal_width: confloat(ge=0.0, le=1.0)
+    sepal_length: float = Field(..., ge=0.0, le=1.0)
+    sepal_width: float = Field(..., ge=0.0, le=1.0)
+    petal_length: float = Field(..., ge=0.0, le=1.0)
+    petal_width: float = Field(..., ge=0.0, le=1.0)
 
     # with an example
     class Config:
@@ -61,9 +61,9 @@ class Features(BaseModel):
 
 # We'll respond something like this:
 class Response(BaseModel):
-    setosa_probability: confloat(ge=0.0, le=1.0)
-    versicolor_probability: confloat(ge=0.0, le=1.0)
-    virginica_probability: confloat(ge=0.0, le=1.0)
+    setosa_probability: float = Field(..., ge=0.0, le=1.0)
+    versicolor_probability: float = Field(..., ge=0.0, le=1.0)
+    virginica_probability: float = Field(..., ge=0.0, le=1.0)
 
     # with an example
     class Config:
@@ -78,7 +78,7 @@ class Response(BaseModel):
 
 # the endpoint
 @app.post("/predict/", response_model=Response)
-def predict(features: Features):
+def predict(features: Features) -> Response:
     feature_list = [
         features.sepal_length,
         features.sepal_width,

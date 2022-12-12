@@ -2,7 +2,33 @@ from fastapi import FastAPI, Response, status
 from typing import Dict, Any, Optional
 
 
-app = FastAPI()
+# some documentation in markdown
+description = """
+## Documentation
+**ℹ️ Read carefully before using**
+
+This api allows you to predict the type of Iris plant given a list of features.
+The features should be:
+* sepal length in cm
+* sepal width in cm
+* petal length in cm
+* petal width in cm
+
+_Build by:_
+![logo](<https://amplemarket.com/_next/image?url=%2Fsvg%2Flogo.svg&w=384&q=75>)
+"""
+
+# create FastAPI app and load model
+app = FastAPI(
+    title="IRIS Classification",
+    description=description,
+    version="0.1",
+    contact={
+        "name": "Amplemarket",
+        "url": "<https://amplemarket.com>",
+        "email": "support@yourcompany.com",
+    },
+)
 
 
 @app.get(

@@ -30,6 +30,9 @@ print(res.text)
 
 # Send get request to "fastapi8_what_to_test:app"
 url = "http://127.0.0.1:8000/items/foo"  # The Path-Variable 'item_id'=foo [withing the /items/ endpoint]
-x = requests.get(
+res = requests.get(
     url, headers={"X-Token": "coneofsilence"}
 )  # Query-Variable 'x_token'=coneofsilence
+
+print(res.status_code)
+print(res.json())
